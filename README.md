@@ -11,7 +11,7 @@
 - **非侵入式封装**：不修改官方 Agent loop、工具协议或会话存储；其他工具仍可按官方支持范围使用 Harness 的 CLI、SDK、Headless 与 ACP 能力。
 - **本地桌面体验**：内置 Runtime、自动创建默认工作区、关闭窗口最小化至托盘，退出菜单才会停止 Harness。
 - **中文扩展插件**：中文权限映射、中文设置说明，以及插件市场中的中文名称、分类和说明。
-- **插件市场**：集成 `dshmarket`，支持搜索、安装、更新、卸载、启停、已安装/可更新筛选和已知 UI 冲突提示。
+- **插件市场**：集成 [dshmarket](https://github.com/dsh-market/dsh-market) 社区插件市场；Desktop 在其基础上提供中文说明、本地管理和受限网络兜底，支持搜索、安装、更新、卸载、启停、已安装/可更新筛选和已知 UI 冲突提示。
 - **MCP、SKILL 与主题**：内置 MCP 服务配置器；支持本地导入插件/Skill 包，以及主题和 UI 插件的启停管理。
 - **受限网络兜底**：市场目录有本地快照；npm 使用官方源与国内镜像回退；GitHub 资产可通过代理镜像下载。第三方插件自己的外部 API 不在 Desktop 控制范围内。
 - **本地快照回滚**：对可能修改工作区的工具执行自动创建恢复点，不要求用户先学会 Git。
@@ -49,7 +49,7 @@
 - Harness 数据目录：`%APPDATA%\com.local.harness-desktop\harness-home`
 - 启动日志：`%APPDATA%\com.local.harness-desktop\harness-runtime.log`
 
-请勿在公开 Issue 中提交 API Key、会话内容或完整日志。安全问题请按 [SECURITY.md](SECURITY.md) 的方式私下报告。
+请勿在公开 Issue 中提交 API Key、会话内容或完整日志。安全问题请按 [SECURITY.md](SECURITY.md) 的方式私下报告。第三方组件的署名与来源见 [THIRD_PARTY_NOTICES.md](docs/THIRD_PARTY_NOTICES.md)。
 
 ## 反馈与贡献
 
