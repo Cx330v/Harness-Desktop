@@ -4,6 +4,8 @@
 
 > 社区项目，与 DeepSeek 官方无隶属关系。当前处于 Windows 公测准备阶段。
 
+国内展示页与下载入口：[harness.edgeone.dev](https://harness.edgeone.dev/)
+
 ## 主要功能
 
 - **非侵入式封装**：不修改官方 Agent loop、工具协议或会话存储；其他工具仍可按官方支持范围使用 Harness 的 CLI、SDK、Headless 与 ACP 能力。
@@ -22,6 +24,24 @@
 3. 在官方 Harness 工作台中选择真实项目目录、配置模型与 API Key，然后开始对话。
 
 需要使用插件时，打开 Harness 的“设置 → 扩展插件”。插件名与介绍会优先显示中文；安装第三方插件前请自行判断其来源、权限与依赖的外部服务。
+
+## 界面预览
+
+### 工作台
+
+![Harness Desktop 工作台](docs/images/workbench.png)
+
+### API Key 配置
+
+![API Key 配置](docs/images/api-key-configuration.png)
+
+### 扩展插件与中文插件市场
+
+![扩展插件](docs/images/extensions.png)
+
+### 版本与更新
+
+![版本与更新](docs/images/versions-and-updates.png)
 
 ## 数据位置与排障
 
