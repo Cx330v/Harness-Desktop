@@ -4,7 +4,7 @@
 
 > 社区项目，与 DeepSeek 官方无隶属关系。当前处于 Windows 公测准备阶段。
 
-国内展示页与下载入口：[dhs.danmucore.top](https://dhs.danmucore.top/)
+国内展示页与下载入口：[dsh.danmucore.top](https://dsh.danmucore.top/)
 
 ## 主要功能
 
