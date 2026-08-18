@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Harness Desktop 是面向中文用户的 DeepSeek Harness 社区桌面工作台：本地运行、中文扩展插件、dsh-market 插件市场与官方协议兼容。" />
+  <meta name="theme-color" content="#101827" />
+  <title>Harness Desktop · DeepSeek Harness </title>
+  <style>
+    :root { --bg:#09111f; --surface:#101b2e; --surface-2:#15243b; --line:#253755; --ink:#f3f7ff; --muted:#a7b5ca; --blue:#4f8cff; --cyan:#59e0c1; --violet:#8e7dff; --radius:18px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:radial-gradient(900px 500px at 8% -10%,rgba(79,140,255,.26),transparent 63%),radial-gradient(850px 520px at 96% 5%,rgba(142,125,255,.2),transparent 62%),var(--bg); font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
+    a { color:inherit; }
+    .wrap { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
+    header { position:sticky; z-index:10; top:0; border-bottom:1px solid rgba(167,181,202,.14); background:rgba(9,17,31,.78); backdrop-filter:blur(16px); }
+    .nav { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; gap:11px; align-items:center; font-weight:760; letter-spacing:.1px; text-decoration:none; }
+    .mark { display:grid; place-items:center; width:29px; height:29px; border-radius:9px; color:#05101a; font-size:17px; font-weight:900; background:linear-gradient(135deg,var(--cyan),#6bc5ff); }
+    .links { display:flex; align-items:center; gap:22px; color:var(--muted); font-size:14px; }
+    .links a { text-decoration:none; }
+    .links a:hover { color:var(--ink); }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:43px; padding:10px 17px; border:1px solid var(--line); border-radius:11px; color:var(--ink); background:rgba(21,36,59,.85); font-weight:700; text-decoration:none; transition:transform .15s,border-color .15s,filter .15s; }
+    .button:hover { transform:translateY(-1px); border-color:#779fff; }
+    .button.primary { border:0; color:#071425; background:linear-gradient(135deg,var(--cyan),#72aaff); }
+    .button.primary:hover { filter:brightness(1.06); }
+    .button.ghost { color:var(--muted); }
+    .hero { padding:94px 0 72px; text-align:center; }
+    .eyebrow { display:inline-flex; gap:8px; align-items:center; padding:5px 12px; border:1px solid rgba(89,224,193,.35); border-radius:999px; color:#a8f5df; background:rgba(89,224,193,.09); font-size:13px; }
+    .dot { width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 18px var(--cyan); }
+    h1 { max-width:900px; margin:20px auto 0; font-size:clamp(39px,6vw,65px); line-height:1.13; letter-spacing:-1.8px; }
+    .gradient { color:transparent; background:linear-gradient(100deg,#79f0d6,#82b4ff 48%,#ae91ff); background-clip:text; -webkit-background-clip:text; }
+    .lead { max-width:715px; margin:21px auto 0; color:var(--muted); font-size:18px; }
+    .actions { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:30px; }
+    .meta { display:flex; justify-content:center; flex-wrap:wrap; gap:9px; margin-top:27px; color:var(--muted); font-size:13px; }
+    .meta span { padding:4px 10px; border:1px solid rgba(167,181,202,.18); border-radius:999px; background:rgba(16,27,46,.75); }
+    section { padding:72px 0; }
+    .section-heading { max-width:690px; margin-bottom:29px; }
+    h2 { margin:0; font-size:30px; letter-spacing:-.5px; }
+    .section-heading p { margin:8px 0 0; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+    .card { min-height:190px; padding:23px; border:1px solid var(--line); border-radius:var(--radius); background:linear-gradient(150deg,rgba(23,38,62,.92),rgba(12,22,38,.92)); }
+    .icon { display:grid; place-items:center; width:39px; height:39px; border-radius:11px; color:#c6f9eb; background:rgba(89,224,193,.12); font-size:20px; }
+    .card h3 { margin:15px 0 7px; font-size:17px; }
+    .card p { margin:0; color:var(--muted); font-size:14.5px; }
+    .download-band { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:linear-gradient(105deg,rgba(79,140,255,.12),rgba(142,125,255,.1)); }
+    .download { display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center; }
+    .version { color:#a8f5df; font-size:14px; font-weight:700; }
+    .download h2 { margin-top:6px; }
+    .download p { margin:10px 0 0; color:var(--muted); }
+    .download-panel { padding:22px; border:1px solid rgba(119,159,255,.5); border-radius:var(--radius); background:rgba(8,17,31,.55); }
+    .download-panel .button { width:100%; margin-bottom:10px; }
+    .download-panel .button:last-of-type { margin-bottom:0; }
+    .download-note { margin:13px 0 0; color:var(--muted); font-size:12.5px; }
+    .download-note a { color:#9abfff; }
+    .checks { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:28px; }
+    .check { padding:15px; border:1px solid var(--line); border-radius:13px; background:rgba(16,27,46,.76); }
+    .check b { display:block; margin-bottom:3px; }
+    .check span { color:var(--muted); font-size:13px; overflow-wrap:anywhere; }
+    .screenshots { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+    figure { overflow:hidden; margin:0; border:1px solid var(--line); border-radius:16px; background:var(--surface); }
+    figure img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; background:#0c1525; }
+    figcaption { padding:12px 14px 14px; color:var(--muted); font-size:14px; }
+    .notice { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .notice > div { padding:20px; border:1px solid var(--line); border-radius:15px; background:rgba(16,27,46,.75); }
+    .notice h3 { margin:0 0 7px; font-size:17px; }
+    .notice p,.notice li { color:var(--muted); font-size:14px; }
+    .notice p { margin:0; }
+    .notice ul { margin:8px 0 0; padding-left:19px; }
+    footer { padding:34px 0 45px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; text-align:center; }
+    footer p { margin:5px 0; }
+    footer a { color:#9abfff; text-decoration:none; }
+    @media (max-width:800px) { .links { display:none; } .grid,.download,.checks,.notice { grid-template-columns:1fr; } .hero { padding-top:70px; } section { padding:52px 0; } .screenshots { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top"><span class="mark">H</span>Harness Desktop</a>
+      <nav class="links" aria-label="页面导航"><a href="#features">功能</a><a href="#screenshots">截图</a><a href="#download">下载</a><a href="#about">说明</a></nav>
+      <a class="button" href="#download">下载 Windows 版</a>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero"><div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>Windows 公测版 · v0.1.37</div>
+      <h1>让 DeepSeek Harness<br><span class="gradient">成为中文用户易用的桌面工作台</span></h1>
+      <p class="lead">Harness Desktop 在本机运行官方 Harness 内核，并加入中文扩展插件、集成式插件市场和本地化设置体验。它不替换官方 Agent、CLI、SDK 或协议。</p>
+      <div class="actions"><a class="button primary" href="#download">⬇ 下载 v0.1.37</a><a class="button ghost" href="https://github.com/Cx330v/Harness-Desktop" target="_blank" rel="noopener">查看 GitHub 仓库 ↗</a></div>
+      <div class="meta"><span>本地数据优先</span><span>保留官方 SDK / CLI / Headless 能力</span><span>社区工作台，非官方产品</span></div>
+    </div></section>
+    <section id="features"><div class="wrap">
+      <div class="section-heading"><h2>不是另一个浏览器壳</h2><p>目标是减少中文用户使用 Harness 的门槛，同时把运行时、工作区、插件和更新控制留在本机。</p></div>
+      <div class="grid">
+        <article class="card"><div class="icon">🧰</div><h3>随包运行时</h3><p>Windows 安装包包含运行 Harness 所需的环境；Desktop 负责启动和管理本机回环工作台。</p></article>
+        <article class="card"><div class="icon">🀄</div><h3>中文扩展插件</h3><p>将权限、常用设置和插件说明映射为中文，后端仍使用官方原始插件与配置，不改变调用标识。</p></article>
+        <article class="card"><div class="icon">🧩</div><h3>集成 dsh-market</h3><p>在“扩展插件”中浏览、搜索、安装、停用、更新和卸载社区插件；市场能力来自 dsh-market。</p></article>
+        <article class="card"><div class="icon">🔌</div><h3>MCP 与 SKILL</h3><p>提供 MCP 配置入口，并按插件、UI 主题、MCP、SKILL 分类整理已安装内容，降低配置复杂度。</p></article>
+        <article class="card"><div class="icon">🛡️</div><h3>本机与安全提示</h3><p>会话、工作区和凭据留在本机。市场展示来源、收藏量与安全提示，安装前由用户自行判断风险。</p></article>
+        <article class="card"><div class="icon">↻</div><h3>版本与更新</h3><p>统一检查 Desktop、Harness 内核与第三方插件更新；Desktop 更新通过签名安装包分发，内核更新支持校验后切换。</p></article>
+      </div>
+    </div></section>
+    <section id="download" class="download-band"><div class="wrap download">
+      <div><div class="version">当前公开版本 · v0.1.37</div><h2>下载 Harness Desktop</h2><p>适用于 Windows 10/11（x64）。安装包约 140 MB，首次启动会准备本机 Harness 工作台。若网络无法直连 GitHub，可使用下方第三方代理下载。</p></div>
+      <div class="download-panel">
+        <a class="button primary" href="https://github.com/Cx330v/Harness-Desktop/releases/download/v0.1.37/Harness-Desktop-0.1.37-x64-setup.exe" target="_blank" rel="noopener">GitHub 直连下载 ↗</a>
+        <a class="button" href="https://v4.gh-proxy.org/https://github.com/Cx330v/Harness-Desktop/releases/download/v0.1.37/Harness-Desktop-0.1.37-x64-setup.exe" target="_blank" rel="noopener">GitHub 代理下载（gh-proxy）↗</a>
+        <a class="button ghost" href="https://github.com/Cx330v/Harness-Desktop/releases/tag/v0.1.37" target="_blank" rel="noopener">查看 Release、签名与校验文件 ↗</a>
+        <p class="download-note">gh-proxy 为第三方 GitHub 代理，与本项目无隶属关系；其即时可用性由服务商决定。代理无法打开时，请使用 GitHub 直连或 Release 页面中的其他资产。</p>
+      </div>
+    </div></section>
+    <section><div class="wrap"><div class="section-heading"><h2>下载后可核验</h2><p>Release 同时提供签名文件与 SHA-256 校验清单；下载来源与版本都能在 GitHub Release 页面复核。</p></div>
+      <div class="checks"><div class="check"><b>安装包</b><span>Harness-Desktop-0.1.37-x64-setup.exe</span></div><div class="check"><b>SHA-256</b><span>73740cb6b36cc14f1decfb434aa0e5fa738f2199bf1f60a70329ccae8541d936</span></div><div class="check"><b>更新清单</b><span>desktop.json 随 Release 发布，供 Desktop 更新检查使用。</span></div></div>
+    </div></section>
+    <section id="screenshots"><div class="wrap"><div class="section-heading"><h2>界面预览</h2><p>以下截图来自 Harness Desktop 当前版本的实际工作台与设置页面。</p></div>
+      <div class="screenshots">
+        <figure><img src="docs/images/workbench.png" alt="Harness Desktop 工作台" loading="lazy" /><figcaption>工作台：以官方 Harness 界面为核心，保留原有工作区与对话能力。</figcaption></figure>
+        <figure><img src="docs/images/extensions.png" alt="扩展插件与市场界面" loading="lazy" /><figcaption>扩展插件：中文说明、分类、已安装与更新入口；集成 dsh-market 市场。</figcaption></figure>
+        <figure><img src="docs/images/api-key-configuration.png" alt="模型和 API Key 配置" loading="lazy" /><figcaption>模型与 Key 配置：凭据保存在本机，不经本项目服务器。</figcaption></figure>
+        <figure><img src="docs/images/versions-and-updates.png" alt="版本与更新页面" loading="lazy" /><figcaption>版本与更新：统一检查 Desktop、Harness 内核和第三方插件的可用更新。</figcaption></figure>
+      </div>
+    </div></section>
+    <section id="about"><div class="wrap"><div class="notice"><div><h3>兼容边界</h3><p>Desktop 不 fork 或修改 Harness 的 Agent loop、工具协议和会话格式；其他 AI 工具仍应通过官方 Python SDK、CLI、Headless 或 ACP（以官方支持范围为准）与同一运行时协作。</p></div><div><h3>第三方组件</h3><p>插件市场能力集成自 <a href="https://github.com/dsh-market/dsh-market" target="_blank" rel="noopener">dsh-market</a>。社区插件可能访问文件、网络或外部服务，请在安装前阅读市场说明并自行评估。</p><ul><li>社区工作台，与 DeepSeek 官方无隶属关系</li><li>不收集或上传 API Key、会话与工作区数据</li></ul></div></div></div></section>
+  </main>
+  <footer><div class="wrap"><p><a href="https://github.com/Cx330v/Harness-Desktop" target="_blank" rel="noopener">GitHub 仓库</a> · <a href="https://github.com/Cx330v/Harness-Desktop/releases/tag/v0.1.37" target="_blank" rel="noopener">v0.1.37 Release</a> · <a href="https://github.com/dsh-market/dsh-market" target="_blank" rel="noopener">dsh-market</a></p><p>Harness Desktop 是社区维护的 DeepSeek Harness 桌面工作台。</p></div></footer>
+</body>
+</html>
+
