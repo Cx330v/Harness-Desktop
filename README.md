@@ -4,7 +4,7 @@
 
 > 社区项目，与 DeepSeek 官方无隶属关系。当前处于 Windows 公测准备阶段。
 
-国内展示页与下载入口：[演示入口](https://www.axureshow.com/project/FYrSy9X5/)
+国内展示页与下载入口：[演示入口]([https://dhs.danmucore.top/])
 
 ## 主要功能
 
